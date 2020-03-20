@@ -16,6 +16,15 @@ class Menu {
     addDish(title, description, price){
         this.dishArray.push(new Dish(title, description, price));
     }
+    updateCategory(titleCategory, newTitle){
+        for (let i = 0; i < this.categoryArray.length; i++){
+            if (this.categoryArray[i].titleCategory === titleCategory){
+                this.categoryArray[i].titleCategory = newTitle;
+
+                return ;
+            }
+        }
+    }
     
     dishToCategory(title, titleCategory){
         
@@ -146,6 +155,7 @@ menu.printDish('coffee');
 
 console.log('--------------------------------------')
 
-menu.deleteCategory('breakfast');
-menu.printDish('coffee');
+
+menu.updateCategory('breakfast', 'zavtra');
+menu.printCategory('zavtra');
 
