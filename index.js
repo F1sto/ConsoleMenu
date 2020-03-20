@@ -66,6 +66,15 @@ class Menu {
             }
         }
     }
+    deleteCategory(titleCategory){
+        for (let i = 0; i < this.categoryArray.length; i++){
+            if (this.categoryArray[i].titleCategory === titleCategory) {
+                this.dishArray.push(this.categoryArray[i].categoryDish);
+                this.categoryArray.splice(i, 1);
+                return;
+            }
+        }
+    }
 }
 
 
@@ -134,3 +143,9 @@ menu.deleteDish('coffee', 'breakfast');
 menu.printCategory('breakfast');
 console.log('--------------------------------------')
 menu.printDish('coffee');
+
+console.log('--------------------------------------')
+
+menu.deleteCategory('breakfast');
+menu.printDish('coffee');
+
