@@ -16,12 +16,27 @@ class Menu {
     addDish(title, description, price){
         this.dishArray.push(new Dish(title, description, price));
     }
-    updateCategory(titleCategory, newTitle){
+
+    updateCategory(titleCategory, newTitleCat){
         for (let i = 0; i < this.categoryArray.length; i++){
             if (this.categoryArray[i].titleCategory === titleCategory){
-                this.categoryArray[i].titleCategory = newTitle;
+                this.categoryArray[i].titleCategory = newTitleCat;
 
                 return ;
+            }
+        }
+    }
+
+    updateDish(title, newTitle, newDesc, newPrice){
+        for (let i = 0; i < this.categoryArray.length; i++){
+            for (let j = 0; j < this.categoryArray[i].categoryDish.length; j++){
+                if (this.categoryArray[i].categoryDish[j].title === title) {
+                    this.categoryArray[i].categoryDish[j].title = newTitle;
+                    this.categoryArray[i].categoryDish[j].description = newDesc;
+                    this.categoryArray[i].categoryDish[j].price = newPrice;
+
+                    return ;
+                }
             }
         }
     }
@@ -61,12 +76,6 @@ class Menu {
         })
     }
 
-    _findDish(title){
-        return this.dishArray.find(dish => dish.title === title);
-    }
-    _findCategory(title){
-        return this.categoryArray.find(category => category.titleCategory === title);
-    }
     
     deleteDish(title, titleCategory){
         for (let i = 0; i < this.categoryArray.length; i++){
@@ -89,6 +98,18 @@ class Menu {
                 return;
             }
         }
+    }
+    _findDish(title){
+        for (let i = 0; i < this.categoryArray.length; i++){
+            for(let j = 0; j < this.categoryArray[i].categoryDish.length; j++) {
+                if (this.categoryArray[i].categoryDish[j].title === title){
+                    return this.categoryArray[i].categoryDish[j];
+                }
+            }
+        }
+    }
+    _findCategory(title){
+        return this.categoryArray.find(category => category.titleCategory === title);
     }
 }
 
@@ -132,8 +153,9 @@ const category = new Category();
 menu.addCategory('soup')
 menu.printCategory('soup');
 menu.addDish('lagman', 'desc', 50);
-menu.printDish('lagman');
+
 menu.dishToCategory('lagman', 'soup');
+menu.printDish('lagman');
 console.log('--------------------------------------')
 menu.printCategory('soup');
 
@@ -145,19 +167,18 @@ console.log('--------------------------------------')
 
 menu.addDish('coffee', 'espresso', 100);
 menu.addDish('hleb', 'nan', 100);
-menu.printDish('coffee');
 
 console.log('--------------------------------------')
 
 
 menu.dishToCategory('hleb', 'breakfast');
 menu.dishToCategory('coffee', 'breakfast');
+menu.printDish('coffee');
 menu.printCategory('breakfast');
 console.log('--------------------------------------')
 menu.deleteDish('coffee', 'breakfast');
 menu.printCategory('breakfast');
 console.log('--------------------------------------')
-menu.printDish('coffee');
 
 console.log('--------------------------------------')
 
@@ -166,4 +187,8 @@ menu.updateCategory('breakfast', 'zavtra');
 menu.printCategory('zavtra');
 console.log('--------------------------------------')
 menu.printCategories();
+
+console.log('--------------------------------------')
+menu.updateDish('hleb', 'bread', 'desc', 23);
+menu.printDish('bread');
 
