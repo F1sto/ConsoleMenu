@@ -24,6 +24,7 @@ class Menu {
                 for(let j = 0; j < this.dishArray.length; j++){
                     if (this.dishArray[j].title === title){
                         this.categoryArray[i].categoryDish.push(this.dishArray[j]);
+                        this.dishArray.splice(j, 1);
                     }
                 }
                 
@@ -57,6 +58,7 @@ class Menu {
             if (this.categoryArray[i].titleCategory === titleCategory){
                 for(let j = 0; j < this.categoryArray[i].categoryDish.length; j++) {
                     if (this.categoryArray[i].categoryDish[j].title === title){
+                        this.dishArray.push(this.categoryArray[i].categoryDish[j]);
                         this.categoryArray[i].categoryDish.splice(j, 1);
                         return;
                     }
@@ -130,3 +132,5 @@ menu.printCategory('breakfast');
 console.log('--------------------------------------')
 menu.deleteDish('coffee', 'breakfast');
 menu.printCategory('breakfast');
+console.log('--------------------------------------')
+menu.printDish('coffee');
