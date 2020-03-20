@@ -48,6 +48,12 @@ class Menu {
     printCategory(titleCategory){
         this._findCategory(titleCategory).printC();
     }
+
+    printCategories(){
+        for (let i = 0; i < this.categoryArray.length; i++){
+            this.printCategory(this.categoryArray[i].titleCategory);
+        }
+    }
     
     printDishes(){
         dishArray.forEach( () => {
@@ -158,4 +164,6 @@ console.log('--------------------------------------')
 
 menu.updateCategory('breakfast', 'zavtra');
 menu.printCategory('zavtra');
+console.log('--------------------------------------')
+menu.printCategories();
 
