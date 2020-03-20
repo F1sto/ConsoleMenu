@@ -75,6 +75,14 @@ class Menu {
         }
     }
 
+    findDish(title){
+        for (let i = 0; i < this.categoryArray.length; i++){
+            for (let j = 0; j < this.categoryArray[i].categoryDish.length; j++){
+                this.categoryArray[i].categoryDish[j].title.includes(title) ? console.log(this.categoryArray[i].categoryDish[j].title) : null;
+            }
+        }
+    }
+
     printCategories(){
         for (let i = 0; i < this.categoryArray.length; i++){
             this.printCategory(this.categoryArray[i].titleCategory);
@@ -199,4 +207,4 @@ menu.printDish('bread');
 console.log('--------------------------------------');
 
 menu.printDishes();
-
+menu.findDish('2');
