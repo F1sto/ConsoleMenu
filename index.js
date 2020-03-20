@@ -64,18 +64,22 @@ class Menu {
         this._findCategory(titleCategory).printC();
     }
 
+    printDishes(){
+        for (let i = 0; i < this.categoryArray.length; i++){
+            for (let j = 0; j < this.categoryArray[i].categoryDish.length; j++){
+                console.log(this.categoryArray[i].categoryDish[j].title);
+                console.log(this.categoryArray[i].categoryDish[j].description);
+                console.log(this.categoryArray[i].categoryDish[j].price);
+                console.log('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~');
+            }
+        }
+    }
+
     printCategories(){
         for (let i = 0; i < this.categoryArray.length; i++){
             this.printCategory(this.categoryArray[i].titleCategory);
         }
     }
-    
-    printDishes(){
-        dishArray.forEach( () => {
-            dish.print();
-        })
-    }
-
     
     deleteDish(title, titleCategory){
         for (let i = 0; i < this.categoryArray.length; i++){
@@ -185,10 +189,14 @@ console.log('--------------------------------------')
 
 menu.updateCategory('breakfast', 'zavtra');
 menu.printCategory('zavtra');
-console.log('--------------------------------------')
+console.log('--------------------------------------');
 menu.printCategories();
 
-console.log('--------------------------------------')
+console.log('--------------------------------------');
 menu.updateDish('hleb', 'bread', 'desc', 23);
 menu.printDish('bread');
+
+console.log('--------------------------------------');
+
+menu.printDishes();
 
