@@ -1,14 +1,10 @@
-// let menuArray = [];
 class Menu {
-    constructor(titleMenu){
+        constructor(titleMenu){
         this.titleMenu = titleMenu;
         this.categoryArray = [];
         this.dishArray = [];
     }
-    addMenu(titleMenu){
-        menuArray.push(new Menu(titleMenu));
-    }
-
+    
     addCategory(titleCategory){
         this.categoryArray.push(new Category(titleCategory));
     }
@@ -102,6 +98,7 @@ class Menu {
             }
         }
     }
+
     deleteCategory(titleCategory){
         for (let i = 0; i < this.categoryArray.length; i++){
             if (this.categoryArray[i].titleCategory === titleCategory) {
@@ -111,6 +108,7 @@ class Menu {
             }
         }
     }
+
     _findDish(title){
         for (let i = 0; i < this.categoryArray.length; i++){
             for(let j = 0; j < this.categoryArray[i].categoryDish.length; j++) {
@@ -120,11 +118,11 @@ class Menu {
             }
         }
     }
+
     _findCategory(title){
         return this.categoryArray.find(category => category.titleCategory === title);
     }
 }
-
 
 class Category {
     constructor(titleCategory){
@@ -147,14 +145,6 @@ class Dish {
         console.log(this.title);
         console.log(this.description);
         console.log(this.price);
-    }
-}
-
-function printDish(title) {
-    for (let i = 0; i < dishArray.length; i++){
-        if (dishArray[i].title === title){
-            console.log(dishArray[i]);
-        }
     }
 }
 
